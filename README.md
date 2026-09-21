@@ -1,5 +1,5 @@
 
-move spline in Blender geometry nodes.
+Deform spline in Blender geometry nodes.
 
 Converting nodes into python script using node-to-python add-on.
 
