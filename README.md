@@ -7,4 +7,4 @@ Converting nodes into python script using node-to-python add-on.
 1. Taget Object: Faces, or Faces with one loose edge line([]_, []__/, etc...).
 2. Spline intersects Taget Faces, start moving.
 3. Only Faces -> Mean Point, Hasloose edge line -> useing Interpolate Curves nodes.
-4. That's all.
+
