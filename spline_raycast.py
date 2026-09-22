@@ -44,6 +44,22 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
     target_object_socket.default_input = 'VALUE'
     target_object_socket.structure_type = 'AUTO'
 
+    # Socket Max Neighbors
+    max_neighbors_socket = spline_raycast_nodes_1.interface.new_socket(name="Max Neighbors", in_out='INPUT', socket_type='NodeSocketInt')
+    max_neighbors_socket.default_value = 0
+    max_neighbors_socket.min_value = -2147483648
+    max_neighbors_socket.max_value = 2147483647
+    max_neighbors_socket.subtype = 'NONE'
+    max_neighbors_socket.attribute_domain = 'POINT'
+    max_neighbors_socket.default_input = 'VALUE'
+    max_neighbors_socket.structure_type = 'AUTO'
+
+    # Socket Material
+    material_socket = spline_raycast_nodes_1.interface.new_socket(name="Material", in_out='INPUT', socket_type='NodeSocketMaterial')
+    material_socket.attribute_domain = 'POINT'
+    material_socket.default_input = 'VALUE'
+    material_socket.structure_type = 'AUTO'
+
     # Initialize spline_raycast_nodes_1 nodes
 
     # Node Group Input
@@ -615,8 +631,6 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
     interpolate_curves.inputs[4].default_value = (0.0, 0.0, 0.0)
     # Point Group ID
     interpolate_curves.inputs[5].default_value = 0
-    # Max Neighbors
-    interpolate_curves.inputs[6].default_value = 1
 
     # Node Points to Curves
     points_to_curves = spline_raycast_nodes_1.nodes.new("GeometryNodePointsToCurves")
@@ -822,6 +836,34 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
     join_geometry_003.name = "Join Geometry.003"
     join_geometry_003.show_options = True
 
+    # Node Set Position
+    set_position = spline_raycast_nodes_1.nodes.new("GeometryNodeSetPosition")
+    set_position.name = "Set Position"
+    set_position.show_options = True
+    # Selection
+    set_position.inputs[1].default_value = True
+    # Position
+    set_position.inputs[2].default_value = (0.0, 0.0, 0.0)
+    # Offset
+    set_position.inputs[3].default_value = (0.0, 0.10000000149011612, 0.0)
+
+    # Node Join Geometry.004
+    join_geometry_004 = spline_raycast_nodes_1.nodes.new("GeometryNodeJoinGeometry")
+    join_geometry_004.name = "Join Geometry.004"
+    join_geometry_004.show_options = True
+
+    # Node Set Material
+    set_material = spline_raycast_nodes_1.nodes.new("GeometryNodeSetMaterial")
+    set_material.name = "Set Material"
+    set_material.show_options = True
+    # Selection
+    set_material.inputs[1].default_value = True
+
+    # Node Group Input.002
+    group_input_002 = spline_raycast_nodes_1.nodes.new("NodeGroupInput")
+    group_input_002.name = "Group Input.002"
+    group_input_002.show_options = True
+
     # Process zone input For Each Geometry Element Input
     for_each_geometry_element_input.pair_with_output(for_each_geometry_element_output)
     # Selection
@@ -831,7 +873,7 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
 
     # Set locations
     spline_raycast_nodes_1.nodes["Group Input"].location = (-1053.1202392578125, 26.092500686645508)
-    spline_raycast_nodes_1.nodes["Group Output"].location = (7357.8486328125, 473.12115478515625)
+    spline_raycast_nodes_1.nodes["Group Output"].location = (9066.5927734375, -105.80203247070312)
     spline_raycast_nodes_1.nodes["Offset Point in Curve"].location = (-369.2333068847656, -429.2154541015625)
     spline_raycast_nodes_1.nodes["Sample Index"].location = (-163.80276489257812, -199.2880096435547)
     spline_raycast_nodes_1.nodes["Position"].location = (-373.6148376464844, -346.5038757324219)
@@ -845,7 +887,7 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
     spline_raycast_nodes_1.nodes["Accumulate Field"].location = (1531.0916748046875, 24.204254150390625)
     spline_raycast_nodes_1.nodes["Curve of Point.001"].location = (1353.130615234375, -150.89498901367188)
     spline_raycast_nodes_1.nodes["Named Attribute.001"].location = (1354.114501953125, -18.902938842773438)
-    spline_raycast_nodes_1.nodes["Join Geometry"].location = (7086.8154296875, -75.73029327392578)
+    spline_raycast_nodes_1.nodes["Join Geometry"].location = (7920.1064453125, 221.21319580078125)
     spline_raycast_nodes_1.nodes["Spline Length"].location = (718.7775268554688, -369.91949462890625)
     spline_raycast_nodes_1.nodes["Math"].location = (880.2483520507812, -247.1407470703125)
     spline_raycast_nodes_1.nodes["Math.001"].location = (1038.72900390625, -118.37279510498047)
@@ -860,7 +902,7 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
     spline_raycast_nodes_1.nodes["Compare.003"].location = (2532.229736328125, 1507.50732421875)
     spline_raycast_nodes_1.nodes["Named Attribute.004"].location = (2355.644775390625, 1326.406005859375)
     spline_raycast_nodes_1.nodes["For Each Geometry Element Input"].location = (3061.99755859375, 1438.731201171875)
-    spline_raycast_nodes_1.nodes["For Each Geometry Element Output"].location = (6895.7421875, 1418.0804443359375)
+    spline_raycast_nodes_1.nodes["For Each Geometry Element Output"].location = (7614.63623046875, 1427.079833984375)
     spline_raycast_nodes_1.nodes["Realize Instances"].location = (3292.0244140625, 1449.7269287109375)
     spline_raycast_nodes_1.nodes["Set Position.003"].location = (4532.736328125, 1471.31591796875)
     spline_raycast_nodes_1.nodes["Boolean Math.002"].location = (4105.83984375, 1613.00927734375)
@@ -887,7 +929,7 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
     spline_raycast_nodes_1.nodes["Mesh to Curve"].location = (3901.52685546875, 474.56793212890625)
     spline_raycast_nodes_1.nodes["Is Edge Loose"].location = (3243.12109375, 204.36587524414062)
     spline_raycast_nodes_1.nodes["Boolean Math.001"].location = (3708.978515625, 331.1709899902344)
-    spline_raycast_nodes_1.nodes["Join Geometry.001"].location = (6661.10791015625, 1023.337890625)
+    spline_raycast_nodes_1.nodes["Join Geometry.001"].location = (7380.001953125, 1032.3372802734375)
     spline_raycast_nodes_1.nodes["Integer Math.001"].location = (3274.84521484375, 347.1900939941406)
     spline_raycast_nodes_1.nodes["Store Named Attribute"].location = (2972.808837890625, 972.8980102539062)
     spline_raycast_nodes_1.nodes["Vertex Neighbors"].location = (2628.558349609375, 723.7326049804688)
@@ -907,7 +949,7 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
     spline_raycast_nodes_1.nodes["Interpolate Curves"].location = (4572.17724609375, 764.382568359375)
     spline_raycast_nodes_1.nodes["Points to Curves"].location = (6221.5302734375, 484.26715087890625)
     spline_raycast_nodes_1.nodes["Delete Geometry"].location = (5106.08447265625, 502.710693359375)
-    spline_raycast_nodes_1.nodes["Curve of Point"].location = (4755.11181640625, 537.4323120117188)
+    spline_raycast_nodes_1.nodes["Curve of Point"].location = (4743.67626953125, 461.08349609375)
     spline_raycast_nodes_1.nodes["Compare.002"].location = (4925.263671875, 410.77911376953125)
     spline_raycast_nodes_1.nodes["Domain Size"].location = (5298.48193359375, 535.8196411132812)
     spline_raycast_nodes_1.nodes["Domain Size.001"].location = (5295.8583984375, 1084.308349609375)
@@ -930,10 +972,14 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
     spline_raycast_nodes_1.nodes["Named Attribute.009"].location = (5153.0234375, 41.66281509399414)
     spline_raycast_nodes_1.nodes["Sample Index.007"].location = (3339.44970703125, 571.693115234375)
     spline_raycast_nodes_1.nodes["Index.004"].location = (3158.611572265625, 480.6488952636719)
-    spline_raycast_nodes_1.nodes["Switch"].location = (6287.7763671875, 1155.35791015625)
-    spline_raycast_nodes_1.nodes["Compare.007"].location = (6108.02294921875, 1254.91015625)
+    spline_raycast_nodes_1.nodes["Switch"].location = (6916.80859375, 1146.3585205078125)
+    spline_raycast_nodes_1.nodes["Compare.007"].location = (6703.62744140625, 1238.737060546875)
     spline_raycast_nodes_1.nodes["Separate Components"].location = (-828.830322265625, -94.28103637695312)
     spline_raycast_nodes_1.nodes["Join Geometry.003"].location = (-624.895263671875, -249.04171752929688)
+    spline_raycast_nodes_1.nodes["Set Position"].location = (6713.25048828125, 1015.0938720703125)
+    spline_raycast_nodes_1.nodes["Join Geometry.004"].location = (8759.849609375, -136.7359161376953)
+    spline_raycast_nodes_1.nodes["Set Material"].location = (8349.2265625, 86.0120849609375)
+    spline_raycast_nodes_1.nodes["Group Input.002"].location = (8134.8974609375, 17.426681518554688)
 
     # Set dimensions
     spline_raycast_nodes_1.nodes["Group Input"].width  = 140.0
@@ -1158,7 +1204,7 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
     spline_raycast_nodes_1.nodes["Trim Curve.001"].width  = 140.0
     spline_raycast_nodes_1.nodes["Trim Curve.001"].height = 100.0
 
-    spline_raycast_nodes_1.nodes["Interpolate Curves"].width  = 140.0
+    spline_raycast_nodes_1.nodes["Interpolate Curves"].width  = 211.6650390625
     spline_raycast_nodes_1.nodes["Interpolate Curves"].height = 100.0
 
     spline_raycast_nodes_1.nodes["Points to Curves"].width  = 140.0
@@ -1248,12 +1294,24 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
     spline_raycast_nodes_1.nodes["Join Geometry.003"].width  = 140.0
     spline_raycast_nodes_1.nodes["Join Geometry.003"].height = 100.0
 
+    spline_raycast_nodes_1.nodes["Set Position"].width  = 140.0
+    spline_raycast_nodes_1.nodes["Set Position"].height = 100.0
+
+    spline_raycast_nodes_1.nodes["Join Geometry.004"].width  = 140.0
+    spline_raycast_nodes_1.nodes["Join Geometry.004"].height = 100.0
+
+    spline_raycast_nodes_1.nodes["Set Material"].width  = 140.0
+    spline_raycast_nodes_1.nodes["Set Material"].height = 100.0
+
+    spline_raycast_nodes_1.nodes["Group Input.002"].width  = 140.0
+    spline_raycast_nodes_1.nodes["Group Input.002"].height = 100.0
+
 
     # Initialize spline_raycast_nodes_1 links
 
-    # join_geometry.Geometry -> group_output.Geometry
+    # join_geometry_004.Geometry -> group_output.Geometry
     spline_raycast_nodes_1.links.new(
-        spline_raycast_nodes_1.nodes["Join Geometry"].outputs[0],
+        spline_raycast_nodes_1.nodes["Join Geometry.004"].outputs[0],
         spline_raycast_nodes_1.nodes["Group Output"].inputs[0]
     )
     # offset_point_in_curve.Point Index -> sample_index.Index
@@ -1881,6 +1939,11 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
         spline_raycast_nodes_1.nodes["Curve of Point.003"].outputs[0],
         spline_raycast_nodes_1.nodes["Sample Curve"].inputs[1]
     )
+    # separate_geometry_001.Inverted -> join_geometry.Geometry
+    spline_raycast_nodes_1.links.new(
+        spline_raycast_nodes_1.nodes["Separate Geometry.001"].outputs[1],
+        spline_raycast_nodes_1.nodes["Join Geometry"].inputs[0]
+    )
     # compare_007.Result -> switch.Switch
     spline_raycast_nodes_1.links.new(
         spline_raycast_nodes_1.nodes["Compare.007"].outputs[0],
@@ -1890,11 +1953,6 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
     spline_raycast_nodes_1.links.new(
         spline_raycast_nodes_1.nodes["Domain Size"].outputs[0],
         spline_raycast_nodes_1.nodes["Compare.007"].inputs[0]
-    )
-    # points_to_curves.Curves -> switch.True
-    spline_raycast_nodes_1.links.new(
-        spline_raycast_nodes_1.nodes["Points to Curves"].outputs[0],
-        spline_raycast_nodes_1.nodes["Switch"].inputs[2]
     )
     # set_position_003.Geometry -> switch.False
     spline_raycast_nodes_1.links.new(
@@ -1926,19 +1984,44 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
         spline_raycast_nodes_1.nodes["Separate Components"].outputs[4],
         spline_raycast_nodes_1.nodes["Join Geometry.003"].inputs[0]
     )
-    # join_geometry_003.Geometry -> join_geometry.Geometry
+    # set_position.Geometry -> switch.True
+    spline_raycast_nodes_1.links.new(
+        spline_raycast_nodes_1.nodes["Set Position"].outputs[0],
+        spline_raycast_nodes_1.nodes["Switch"].inputs[2]
+    )
+    # points_to_curves.Curves -> set_position.Geometry
+    spline_raycast_nodes_1.links.new(
+        spline_raycast_nodes_1.nodes["Points to Curves"].outputs[0],
+        spline_raycast_nodes_1.nodes["Set Position"].inputs[0]
+    )
+    # group_input_001.Max Neighbors -> interpolate_curves.Max Neighbors
+    spline_raycast_nodes_1.links.new(
+        spline_raycast_nodes_1.nodes["Group Input.001"].outputs[2],
+        spline_raycast_nodes_1.nodes["Interpolate Curves"].inputs[6]
+    )
+    # join_geometry_003.Geometry -> join_geometry_004.Geometry
     spline_raycast_nodes_1.links.new(
         spline_raycast_nodes_1.nodes["Join Geometry.003"].outputs[0],
-        spline_raycast_nodes_1.nodes["Join Geometry"].inputs[0]
+        spline_raycast_nodes_1.nodes["Join Geometry.004"].inputs[0]
+    )
+    # join_geometry.Geometry -> set_material.Geometry
+    spline_raycast_nodes_1.links.new(
+        spline_raycast_nodes_1.nodes["Join Geometry"].outputs[0],
+        spline_raycast_nodes_1.nodes["Set Material"].inputs[0]
+    )
+    # group_input_002.Material -> set_material.Material
+    spline_raycast_nodes_1.links.new(
+        spline_raycast_nodes_1.nodes["Group Input.002"].outputs[3],
+        spline_raycast_nodes_1.nodes["Set Material"].inputs[2]
     )
     # store_named_attribute_005.Geometry -> join_geometry_002.Geometry
     spline_raycast_nodes_1.links.new(
         spline_raycast_nodes_1.nodes["Store Named Attribute.005"].outputs[0],
         spline_raycast_nodes_1.nodes["Join Geometry.002"].inputs[0]
     )
-    # separate_geometry_001.Inverted -> join_geometry.Geometry
+    # for_each_geometry_element_output.Geometry -> join_geometry.Geometry
     spline_raycast_nodes_1.links.new(
-        spline_raycast_nodes_1.nodes["Separate Geometry.001"].outputs[1],
+        spline_raycast_nodes_1.nodes["For Each Geometry Element Output"].outputs[2],
         spline_raycast_nodes_1.nodes["Join Geometry"].inputs[0]
     )
     # separate_components.Instances -> join_geometry_003.Geometry
@@ -1946,10 +2029,10 @@ def spline_raycast_nodes_1_node_group(node_tree_names: dict[typing.Callable, str
         spline_raycast_nodes_1.nodes["Separate Components"].outputs[5],
         spline_raycast_nodes_1.nodes["Join Geometry.003"].inputs[0]
     )
-    # for_each_geometry_element_output.Geometry -> join_geometry.Geometry
+    # set_material.Geometry -> join_geometry_004.Geometry
     spline_raycast_nodes_1.links.new(
-        spline_raycast_nodes_1.nodes["For Each Geometry Element Output"].outputs[2],
-        spline_raycast_nodes_1.nodes["Join Geometry"].inputs[0]
+        spline_raycast_nodes_1.nodes["Set Material"].outputs[0],
+        spline_raycast_nodes_1.nodes["Join Geometry.004"].inputs[0]
     )
     # separate_components.Point Cloud -> join_geometry_003.Geometry
     spline_raycast_nodes_1.links.new(
