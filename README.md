@@ -4,7 +4,7 @@ Deform spline in Blender geometry nodes.
 Converting nodes into python script using node-to-python add-on.
 
 # Update:
-Add Max Neighbors parameter
+Add Max Neighbors parameter.
 
 # Usage:
 1. Taget Object: Faces, or Faces with some loose edge lines([]_, []__/, etc...).
