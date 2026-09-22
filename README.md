@@ -3,8 +3,10 @@ Deform spline in Blender geometry nodes.
 
 Converting nodes into python script using node-to-python add-on.
 
+# Update:Add Max Neighbors parameter
+
 # Usage:
-1. Taget Object: Faces, or Faces with one loose edge line([]_, []__/, etc...).
-2. Spline intersects Taget Faces, start moving.
-3. Only Faces -> Mean Point, Hasloose edge line -> useing Interpolate Curves nodes.
+1. Taget Object: Faces, or Faces with some loose edge lines([]_, []__/, etc...).
+2. Spline intersects Taget Faces, starts moving.
+3. Only Faces -> Mean Point. Has loose edge line -> using Interpolate Curves nodes with Max Neighbors parameter.
 
