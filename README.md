@@ -3,7 +3,10 @@ Deform spline in Blender geometry nodes.
 
 Converting nodes into python script using node-to-python add-on.
 
-# Update:
+## Update2:
+Fix wrong domain size division.
+
+Update1:
 Add Max Neighbors parameter.
 
 # Usage:
