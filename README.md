@@ -3,7 +3,11 @@ Deform spline in Blender geometry nodes.
 
 Converting nodes into python script using node-to-python add-on.
 
-## Update2:
+## Update3:
+Add parameter, Division and Division Seed.
+Make clump splines when Taget Faces has no loose edges.
+
+Update2:
 Fix wrong domain size division.
 
 Update1:
